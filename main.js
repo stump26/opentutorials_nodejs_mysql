@@ -5,23 +5,34 @@ var qs = require('querystring');
 var template = require('./lib/template.js');
 var path = require('path');
 var sanitizeHtml = require('sanitize-html');
+var mysql = require('mysql');
+var dbconfig = require('./password.js');
+var db = mysql.createConnection(dbconfig);
+
+db.connect();
 
 var app = http.createServer(function(request,response){
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
     var pathname = url.parse(_url, true).pathname;
+    console.log(pathname);
     if(pathname === '/'){
       if(queryData.id === undefined){
-        fs.readdir('./data', function(error, filelist){
-          var title = 'Welcome';
-          var description = 'Hello, Node.js';
-          var list = template.list(filelist);
-          var html = template.HTML(title, list,
-            `<h2>${title}</h2>${description}`,
-            `<a href="/create">create</a>`
-          );
+        // fs.readdir('./data', function(error, filelist){
+        //   var title = 'Welcome';
+        //   var description = 'Hello, Node.js';
+        //   var list = template.list(filelist);
+        //   var html = template.HTML(title, list,
+        //     `<h2>${title}</h2>${description}`,
+        //     `<a href="/create">create</a>`
+        //   );
+        //   response.writeHead(200);
+        //   response.end(html);
+        // });
+        db.query('SELECT * FROM topic',function(err,topics){
+          console.log(topics);
           response.writeHead(200);
-          response.end(html);
+          response.end('Success');
         });
       } else {
         fs.readdir('./data', function(error, filelist){
@@ -140,4 +151,4 @@ var app = http.createServer(function(request,response){
       response.end('Not found');
     }
 });
-app.listen(3000);
+app.listen(8123);

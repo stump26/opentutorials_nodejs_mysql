@@ -8,7 +8,7 @@ connection.query('SELECT * FROM topic',function(error,results,fields){
     if(error){
         console.log(error);
     }
-    console.log('The solution is',results[0].solution);
+    console.log(results);
 });
 
 connection.end();

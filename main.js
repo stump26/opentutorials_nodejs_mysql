@@ -4,10 +4,7 @@ var url = require('url');
 var qs = require('querystring');
 var template = require('./lib/template.js');
 var path = require('path');
-var sanitizeHtml = require('sanitize-html');
-var mysql = require('mysql');
-var dbconfig = require('./password.js');
-var db = mysql.createConnection(dbconfig);
+var db = require('./lib/dbconfig.js');
 
 db.connect();
 

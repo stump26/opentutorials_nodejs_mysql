@@ -1,5 +1,5 @@
-**생활코딩(opentutorials)
-*Web2 - Node.js - MySQL
+##생활코딩(opentutorials)
+#Web2 - Node.js - MySQL
 
 https://opentutorials.org/course/3347
 

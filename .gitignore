@@ -1,2 +1,4 @@
 #ignore password.js
 /lib/dbconfig.js
+/node_modules
+/password.js
